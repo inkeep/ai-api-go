@@ -1,11 +1,6 @@
 configVersion: 2.0.0
-management:
-  docChecksum: e77f226f321fb0ac7a96a5349eec64ed
-  docVersion: 1.0.0
-  speakeasyVersion: 1.82.3
-  generationVersion: 2.107.3
 generation:
-  sdkClassName: InkeepAI
+  sdkClassName: chat-api-go
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -15,6 +10,7 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: false
 features:
+  version: ""
   go:
     core: 2.87.1
     examples: 2.81.2
@@ -25,20 +21,24 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 go:
+  version: 0.2.0
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
-  maxMethodParams: 4
-  version: 0.2.0
-  author: Nick Gomez
-  installationURL: https://github.com/inkeep/ai-api-go
-  packageName: 'github.com/inkeep/ai-api-go' 
-  published: true
-  repoSubDirectory: .
   imports:
     option: openapi
     paths:
-      shared: models/components
-      operations: models/operations
-      errors: models/errors
       callbacks: models/callbacks
+      errors: models/sdkerrors
+      operations: models/operations
+      shared: models/components
       webhooks: models/webhooks
+  inputModelSuffix: input
+  maxMethodParams: 4
+  outputModelSuffix: output
+  packageName: github.com/inkeep/ai-api-go
+management:
+  version: ""
+  docChecksum: e77f226f321fb0ac7a96a5349eec64ed
+  docVersion: 1.0.0
+  generationVersion: 2.107.3
+  speakeasyVersion: 1.82.3
