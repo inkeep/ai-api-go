@@ -4,9 +4,9 @@ management:
   docChecksum: ed990373348f5cfd4f8fefdd2c96df77
   docVersion: 0.1.0
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 0.2.1
-  configChecksum: a2a232fffbbbb9cd2ba45e3fcd687055
+  generationVersion: 2.272.7
+  releaseVersion: 0.2.2
+  configChecksum: b091171656eb8edeffc44c2b624c6ea0
   repoURL: https://github.com/inkeep/ai-api-go.git
   repoSubDirectory: .
   installationURL: https://github.com/inkeep/ai-api-go
@@ -16,7 +16,7 @@ features:
     constsAndDefaults: 0.1.3
     core: 3.4.3
     flattening: 2.81.1
-    globalSecurity: 2.82.7
+    globalSecurity: 2.82.8
     globalServerURLs: 2.82.1
     serverEvents: 0.1.2
     unions: 2.85.3
