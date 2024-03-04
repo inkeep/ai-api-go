@@ -38,6 +38,7 @@ func main() {
             Messages: []components.Message{
                 components.CreateMessageUserMessage(
                     components.UserMessage{
+                        Role: components.RoleUser,
                         Content: "<value>",
                     },
                 ),
@@ -103,6 +104,7 @@ func main() {
         IntegrationID: "<value>",
         Message: components.CreateMessageAssistantMessage(
                 components.AssistantMessage{
+                    Role: components.AssistantMessageRoleAssistant,
                     Content: "<value>",
                 },
         ),

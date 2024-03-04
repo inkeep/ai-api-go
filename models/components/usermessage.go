@@ -3,27 +3,44 @@
 package components
 
 import (
-	"github.com/inkeep/ai-api-go/internal/utils"
+	"encoding/json"
+	"fmt"
 )
 
+type Role string
+
+const (
+	RoleUser Role = "user"
+)
+
+func (e Role) ToPointer() *Role {
+	return &e
+}
+
+func (e *Role) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "user":
+		*e = Role(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Role: %v", v)
+	}
+}
+
 type UserMessage struct {
-	role    string `const:"user" json:"role"`
+	Role    Role   `json:"role"`
 	Content string `json:"content"`
 }
 
-func (u UserMessage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(u, "", false)
-}
-
-func (u *UserMessage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, true); err != nil {
-		return err
+func (o *UserMessage) GetRole() Role {
+	if o == nil {
+		return Role("")
 	}
-	return nil
-}
-
-func (o *UserMessage) GetRole() string {
-	return "user"
+	return o.Role
 }
 
 func (o *UserMessage) GetContent() string {

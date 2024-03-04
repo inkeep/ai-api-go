@@ -3,28 +3,45 @@
 package components
 
 import (
-	"github.com/inkeep/ai-api-go/internal/utils"
+	"encoding/json"
+	"fmt"
 )
+
+type Event string
+
+const (
+	EventMessageChunk Event = "message_chunk"
+)
+
+func (e Event) ToPointer() *Event {
+	return &e
+}
+
+func (e *Event) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "message_chunk":
+		*e = Event(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for Event: %v", v)
+	}
+}
 
 // ChatResultMessageChunkEvent - A server-sent event containing a chunk of the message.
 type ChatResultMessageChunkEvent struct {
-	event string       `const:"message_chunk" json:"event"`
+	Event Event        `json:"event"`
 	Data  MessageChunk `json:"data"`
 }
 
-func (c ChatResultMessageChunkEvent) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(c, "", false)
-}
-
-func (c *ChatResultMessageChunkEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
-		return err
+func (o *ChatResultMessageChunkEvent) GetEvent() Event {
+	if o == nil {
+		return Event("")
 	}
-	return nil
-}
-
-func (o *ChatResultMessageChunkEvent) GetEvent() string {
-	return "message_chunk"
+	return o.Event
 }
 
 func (o *ChatResultMessageChunkEvent) GetData() MessageChunk {

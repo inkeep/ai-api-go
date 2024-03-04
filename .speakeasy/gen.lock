@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 75084268-f421-4ea6-8995-12fee2bcfd75
 management:
-  docChecksum: ed990373348f5cfd4f8fefdd2c96df77
+  docChecksum: a2ddfac75c829598eb43d0570bacb96b
   docVersion: 0.1.0
   speakeasyVersion: internal
   generationVersion: 2.277.0
-  releaseVersion: 0.2.3
-  configChecksum: d5dabbcab8dada1d2627349b214e2f96
+  releaseVersion: 0.2.4
+  configChecksum: d4db8822294bbe933b9c547d48724be0
   repoURL: https://github.com/inkeep/ai-api-go.git
   repoSubDirectory: .
   installationURL: https://github.com/inkeep/ai-api-go
@@ -65,9 +65,11 @@ generatedFiles:
   - docs/models/operations/continuerequest.md
   - docs/models/operations/continueresponse.md
   - docs/models/components/chatresultstream.md
+  - docs/models/components/event.md
   - docs/models/components/chatresultmessagechunkevent.md
   - docs/models/components/finishreason.md
   - docs/models/components/messagechunk.md
+  - docs/models/components/chatresultrecordscitedeventevent.md
   - docs/models/components/chatresultrecordscitedevent.md
   - docs/models/components/recordscited.md
   - docs/models/components/citation.md
@@ -75,6 +77,7 @@ generatedFiles:
   - docs/models/components/recordtypeenumerated.md
   - docs/models/components/recordtype.md
   - docs/models/components/chatresult.md
+  - docs/models/components/assistantmessagerole.md
   - docs/models/components/assistantmessage.md
   - docs/models/components/loc.md
   - docs/models/components/validationerror.md
@@ -83,6 +86,7 @@ generatedFiles:
   - docs/models/components/createchatsessionwithchatresultinput.md
   - docs/models/components/chatsessioninput.md
   - docs/models/components/message.md
+  - docs/models/components/role.md
   - docs/models/components/usermessage.md
   - docs/models/components/continuechatsessionwithchatresultinput.md
   - docs/models/components/security.md

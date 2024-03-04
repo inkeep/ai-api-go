@@ -3,28 +3,45 @@
 package components
 
 import (
-	"github.com/inkeep/ai-api-go/internal/utils"
+	"encoding/json"
+	"fmt"
 )
 
-type AssistantMessage struct {
-	role         string        `const:"assistant" json:"role"`
-	Content      string        `json:"content"`
-	RecordsCited *RecordsCited `json:"records_cited,omitempty"`
+type AssistantMessageRole string
+
+const (
+	AssistantMessageRoleAssistant AssistantMessageRole = "assistant"
+)
+
+func (e AssistantMessageRole) ToPointer() *AssistantMessageRole {
+	return &e
 }
 
-func (a AssistantMessage) MarshalJSON() ([]byte, error) {
-	return utils.MarshalJSON(a, "", false)
-}
-
-func (a *AssistantMessage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+func (e *AssistantMessageRole) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
-	return nil
+	switch v {
+	case "assistant":
+		*e = AssistantMessageRole(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for AssistantMessageRole: %v", v)
+	}
 }
 
-func (o *AssistantMessage) GetRole() string {
-	return "assistant"
+type AssistantMessage struct {
+	Role         AssistantMessageRole `json:"role"`
+	Content      string               `json:"content"`
+	RecordsCited *RecordsCited        `json:"records_cited,omitempty"`
+}
+
+func (o *AssistantMessage) GetRole() AssistantMessageRole {
+	if o == nil {
+		return AssistantMessageRole("")
+	}
+	return o.Role
 }
 
 func (o *AssistantMessage) GetContent() string {
