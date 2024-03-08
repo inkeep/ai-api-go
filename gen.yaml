@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 go:
-  version: 0.2.4
+  version: 0.3.0
   additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -39,6 +39,7 @@ go:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: github.com/inkeep/ai-api-go
+  responseFormat: envelope
 management:
   version: ""
   docChecksum: e77f226f321fb0ac7a96a5349eec64ed

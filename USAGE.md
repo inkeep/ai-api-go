@@ -31,7 +31,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	if res.ChatResult != nil {
 		defer res.ChatResultStream.Close()
 
