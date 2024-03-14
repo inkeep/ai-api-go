@@ -26,9 +26,6 @@ type Message struct {
 func CreateMessageUser(user UserMessage) Message {
 	typ := MessageTypeUser
 
-	typStr := Role(typ)
-	user.Role = typStr
-
 	return Message{
 		UserMessage: &user,
 		Type:        typ,
@@ -37,9 +34,6 @@ func CreateMessageUser(user UserMessage) Message {
 
 func CreateMessageAssistant(assistant AssistantMessage) Message {
 	typ := MessageTypeAssistant
-
-	typStr := AssistantMessageRole(typ)
-	assistant.Role = typStr
 
 	return Message{
 		AssistantMessage: &assistant,

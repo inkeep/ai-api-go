@@ -26,9 +26,6 @@ type ChatResultStream struct {
 func CreateChatResultStreamMessageChunk(messageChunk ChatResultMessageChunkEvent) ChatResultStream {
 	typ := ChatResultStreamTypeMessageChunk
 
-	typStr := Event(typ)
-	messageChunk.Event = typStr
-
 	return ChatResultStream{
 		ChatResultMessageChunkEvent: &messageChunk,
 		Type:                        typ,
@@ -37,9 +34,6 @@ func CreateChatResultStreamMessageChunk(messageChunk ChatResultMessageChunkEvent
 
 func CreateChatResultStreamRecordsCited(recordsCited ChatResultRecordsCitedEvent) ChatResultStream {
 	typ := ChatResultStreamTypeRecordsCited
-
-	typStr := ChatResultRecordsCitedEventEvent(typ)
-	recordsCited.Event = typStr
 
 	return ChatResultStream{
 		ChatResultRecordsCitedEvent: &recordsCited,

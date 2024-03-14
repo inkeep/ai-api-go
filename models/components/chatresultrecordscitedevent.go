@@ -3,45 +3,28 @@
 package components
 
 import (
-	"encoding/json"
-	"fmt"
+	"github.com/inkeep/ai-api-go/internal/utils"
 )
-
-type ChatResultRecordsCitedEventEvent string
-
-const (
-	ChatResultRecordsCitedEventEventRecordsCited ChatResultRecordsCitedEventEvent = "records_cited"
-)
-
-func (e ChatResultRecordsCitedEventEvent) ToPointer() *ChatResultRecordsCitedEventEvent {
-	return &e
-}
-
-func (e *ChatResultRecordsCitedEventEvent) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
-		return err
-	}
-	switch v {
-	case "records_cited":
-		*e = ChatResultRecordsCitedEventEvent(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ChatResultRecordsCitedEventEvent: %v", v)
-	}
-}
 
 // ChatResultRecordsCitedEvent - A server-sent event with information about the records cited in the message.
 type ChatResultRecordsCitedEvent struct {
-	Event ChatResultRecordsCitedEventEvent `json:"event"`
-	Data  RecordsCited                     `json:"data"`
+	event string       `const:"records_cited" json:"event"`
+	Data  RecordsCited `json:"data"`
 }
 
-func (o *ChatResultRecordsCitedEvent) GetEvent() ChatResultRecordsCitedEventEvent {
-	if o == nil {
-		return ChatResultRecordsCitedEventEvent("")
+func (c ChatResultRecordsCitedEvent) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ChatResultRecordsCitedEvent) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+		return err
 	}
-	return o.Event
+	return nil
+}
+
+func (o *ChatResultRecordsCitedEvent) GetEvent() string {
+	return "records_cited"
 }
 
 func (o *ChatResultRecordsCitedEvent) GetData() RecordsCited {

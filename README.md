@@ -51,7 +51,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),
@@ -114,7 +113,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),
@@ -175,7 +173,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),
@@ -237,7 +234,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),
@@ -286,7 +282,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),
@@ -372,7 +367,6 @@ func main() {
 			Messages: []components.Message{
 				components.CreateMessageUserMessage(
 					components.UserMessage{
-						Role:    components.RoleUser,
 						Content: "<value>",
 					},
 				),

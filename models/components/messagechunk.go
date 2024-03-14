@@ -7,19 +7,19 @@ import (
 	"fmt"
 )
 
-type FinishReason string
+type Four string
 
 const (
-	FinishReasonStop          FinishReason = "stop"
-	FinishReasonLength        FinishReason = "length"
-	FinishReasonContentFilter FinishReason = "content_filter"
+	FourStop          Four = "stop"
+	FourLength        Four = "length"
+	FourContentFilter Four = "content_filter"
 )
 
-func (e FinishReason) ToPointer() *FinishReason {
+func (e Four) ToPointer() *Four {
 	return &e
 }
 
-func (e *FinishReason) UnmarshalJSON(data []byte) error {
+func (e *Four) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -30,17 +30,17 @@ func (e *FinishReason) UnmarshalJSON(data []byte) error {
 	case "length":
 		fallthrough
 	case "content_filter":
-		*e = FinishReason(v)
+		*e = Four(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for FinishReason: %v", v)
+		return fmt.Errorf("invalid value for Four: %v", v)
 	}
 }
 
 type MessageChunk struct {
-	ChatSessionID *string       `json:"chat_session_id,omitempty"`
-	ContentChunk  string        `json:"content_chunk"`
-	FinishReason  *FinishReason `json:"finish_reason,omitempty"`
+	ChatSessionID *string     `json:"chat_session_id,omitempty"`
+	ContentChunk  string      `json:"content_chunk"`
+	FinishReason  interface{} `json:"finish_reason,omitempty"`
 }
 
 func (o *MessageChunk) GetChatSessionID() *string {
@@ -57,7 +57,7 @@ func (o *MessageChunk) GetContentChunk() string {
 	return o.ContentChunk
 }
 
-func (o *MessageChunk) GetFinishReason() *FinishReason {
+func (o *MessageChunk) GetFinishReason() interface{} {
 	if o == nil {
 		return nil
 	}
