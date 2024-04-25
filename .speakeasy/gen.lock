@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 75084268-f421-4ea6-8995-12fee2bcfd75
 management:
-  docChecksum: a4b9798e5188ae7c423ed161b4191596
+  docChecksum: 3421b267db90c24a6b62d0b3559978bc
   docVersion: 0.1.0
-  speakeasyVersion: 1.244.0
-  generationVersion: 2.301.0
-  releaseVersion: 0.3.5
-  configChecksum: 62dee1dd563895a75f3ee3539b11b155
+  speakeasyVersion: 1.274.1
+  generationVersion: 2.314.0
+  releaseVersion: 0.3.6
+  configChecksum: 157e1653fa3daa92b3f5e2a929009417
   repoURL: https://github.com/inkeep/ai-api-go.git
   repoSubDirectory: .
   installationURL: https://github.com/inkeep/ai-api-go
