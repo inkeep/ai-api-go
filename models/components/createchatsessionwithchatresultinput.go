@@ -70,14 +70,14 @@ func CreateChatModeStr(str string) ChatMode {
 
 func (u *ChatMode) UnmarshalJSON(data []byte) error {
 
-	chatModeOptions := ChatModeOptions("")
+	var chatModeOptions ChatModeOptions = ChatModeOptions("")
 	if err := utils.UnmarshalJSON(data, &chatModeOptions, "", true, true); err == nil {
 		u.ChatModeOptions = &chatModeOptions
 		u.Type = ChatModeTypeChatModeOptions
 		return nil
 	}
 
-	str := ""
+	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
 		u.Type = ChatModeTypeStr

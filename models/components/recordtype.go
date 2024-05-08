@@ -92,14 +92,14 @@ func CreateRecordTypeStr(str string) RecordType {
 
 func (u *RecordType) UnmarshalJSON(data []byte) error {
 
-	recordTypeEnumerated := RecordTypeEnumerated("")
+	var recordTypeEnumerated RecordTypeEnumerated = RecordTypeEnumerated("")
 	if err := utils.UnmarshalJSON(data, &recordTypeEnumerated, "", true, true); err == nil {
 		u.RecordTypeEnumerated = &recordTypeEnumerated
 		u.Type = RecordTypeTypeRecordTypeEnumerated
 		return nil
 	}
 
-	str := ""
+	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
 		u.Type = RecordTypeTypeStr

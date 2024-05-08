@@ -41,14 +41,14 @@ func CreateLocInteger(integer int64) Loc {
 
 func (u *Loc) UnmarshalJSON(data []byte) error {
 
-	str := ""
+	var str string = ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = &str
 		u.Type = LocTypeStr
 		return nil
 	}
 
-	integer := int64(0)
+	var integer int64 = int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = &integer
 		u.Type = LocTypeInteger

@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 go:
-  version: 0.4.2
+  version: 0.4.3
   additionalDependencies: {}
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
