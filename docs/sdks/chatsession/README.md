@@ -31,8 +31,7 @@ func main() {
         aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-    ctx := context.Background()
-    res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
+    request := components.CreateChatSessionWithChatResultInput{
         IntegrationID: "<value>",
         ChatSession: components.ChatSessionInput{
             Messages: []components.Message{
@@ -43,7 +42,10 @@ func main() {
                 ),
             },
         },
-    })
+    }
+    
+    ctx := context.Background()
+    res, err := s.ChatSession.Create(ctx, request)
     if err != nil {
         log.Fatal(err)
     }
@@ -95,7 +97,6 @@ func main() {
         aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
 
-
     var chatSessionID string = "<value>"
 
     continueChatSessionWithChatResultInput := components.ContinueChatSessionWithChatResultInput{
@@ -106,7 +107,7 @@ func main() {
                 },
         ),
     }
-
+    
     ctx := context.Background()
     res, err := s.ChatSession.Continue(ctx, chatSessionID, continueChatSessionWithChatResultInput)
     if err != nil {
