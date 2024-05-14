@@ -38,9 +38,9 @@ func (e *Four) UnmarshalJSON(data []byte) error {
 }
 
 type MessageChunk struct {
-	ChatSessionID *string     `json:"chat_session_id,omitempty"`
-	ContentChunk  string      `json:"content_chunk"`
-	FinishReason  interface{} `json:"finish_reason,omitempty"`
+	ChatSessionID *string `json:"chat_session_id,omitempty"`
+	ContentChunk  string  `json:"content_chunk"`
+	FinishReason  any     `json:"finish_reason,omitempty"`
 }
 
 func (o *MessageChunk) GetChatSessionID() *string {
@@ -57,7 +57,7 @@ func (o *MessageChunk) GetContentChunk() string {
 	return o.ContentChunk
 }
 
-func (o *MessageChunk) GetFinishReason() interface{} {
+func (o *MessageChunk) GetFinishReason() any {
 	if o == nil {
 		return nil
 	}
