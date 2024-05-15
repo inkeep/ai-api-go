@@ -17,7 +17,7 @@ func (a AssistantMessage) MarshalJSON() ([]byte, error) {
 }
 
 func (a *AssistantMessage) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &a, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &a, "", false, false); err != nil {
 		return err
 	}
 	return nil

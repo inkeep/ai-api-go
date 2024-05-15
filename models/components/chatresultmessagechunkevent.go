@@ -17,7 +17,7 @@ func (c ChatResultMessageChunkEvent) MarshalJSON() ([]byte, error) {
 }
 
 func (c *ChatResultMessageChunkEvent) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &c, "", false, true); err != nil {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
 		return err
 	}
 	return nil
