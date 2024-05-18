@@ -20,8 +20,8 @@ Create Chat Session
 package main
 
 import(
-	"github.com/inkeep/ai-api-go/models/components"
 	aiapigo "github.com/inkeep/ai-api-go"
+	"github.com/inkeep/ai-api-go/models/components"
 	"context"
 	"log"
 )
@@ -86,8 +86,8 @@ Continue Chat Session
 package main
 
 import(
-	"github.com/inkeep/ai-api-go/models/components"
 	aiapigo "github.com/inkeep/ai-api-go"
+	"github.com/inkeep/ai-api-go/models/components"
 	"context"
 	"log"
 )

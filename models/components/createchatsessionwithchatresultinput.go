@@ -19,7 +19,6 @@ const (
 func (e ChatModeOptions) ToPointer() *ChatModeOptions {
 	return &e
 }
-
 func (e *ChatModeOptions) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
@@ -84,7 +83,7 @@ func (u *ChatMode) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChatMode", string(data))
 }
 
 func (u ChatMode) MarshalJSON() ([]byte, error) {
@@ -96,7 +95,7 @@ func (u ChatMode) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Str, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type ChatMode: all fields are null")
 }
 
 type CreateChatSessionWithChatResultInput struct {

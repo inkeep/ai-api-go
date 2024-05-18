@@ -55,8 +55,8 @@ func (u *ChatResultStream) UnmarshalJSON(data []byte) error {
 	switch dis.Event {
 	case "message_chunk":
 		chatResultMessageChunkEvent := new(ChatResultMessageChunkEvent)
-		if err := utils.UnmarshalJSON(data, &chatResultMessageChunkEvent, "", true, true); err != nil {
-			return fmt.Errorf("could not unmarshal expected type: %w", err)
+		if err := utils.UnmarshalJSON(data, &chatResultMessageChunkEvent, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Event == message_chunk) type ChatResultMessageChunkEvent within ChatResultStream: %w", string(data), err)
 		}
 
 		u.ChatResultMessageChunkEvent = chatResultMessageChunkEvent
@@ -64,8 +64,8 @@ func (u *ChatResultStream) UnmarshalJSON(data []byte) error {
 		return nil
 	case "records_cited":
 		chatResultRecordsCitedEvent := new(ChatResultRecordsCitedEvent)
-		if err := utils.UnmarshalJSON(data, &chatResultRecordsCitedEvent, "", true, true); err != nil {
-			return fmt.Errorf("could not unmarshal expected type: %w", err)
+		if err := utils.UnmarshalJSON(data, &chatResultRecordsCitedEvent, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Event == records_cited) type ChatResultRecordsCitedEvent within ChatResultStream: %w", string(data), err)
 		}
 
 		u.ChatResultRecordsCitedEvent = chatResultRecordsCitedEvent
@@ -73,7 +73,7 @@ func (u *ChatResultStream) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for ChatResultStream", string(data))
 }
 
 func (u ChatResultStream) MarshalJSON() ([]byte, error) {
@@ -85,7 +85,7 @@ func (u ChatResultStream) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.ChatResultRecordsCitedEvent, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type ChatResultStream: all fields are null")
 }
 
 func (o ChatResultStream) GetEventEncoding(event string) (string, error) {

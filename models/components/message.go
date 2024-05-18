@@ -55,8 +55,8 @@ func (u *Message) UnmarshalJSON(data []byte) error {
 	switch dis.Role {
 	case "user":
 		userMessage := new(UserMessage)
-		if err := utils.UnmarshalJSON(data, &userMessage, "", true, true); err != nil {
-			return fmt.Errorf("could not unmarshal expected type: %w", err)
+		if err := utils.UnmarshalJSON(data, &userMessage, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Role == user) type UserMessage within Message: %w", string(data), err)
 		}
 
 		u.UserMessage = userMessage
@@ -64,8 +64,8 @@ func (u *Message) UnmarshalJSON(data []byte) error {
 		return nil
 	case "assistant":
 		assistantMessage := new(AssistantMessage)
-		if err := utils.UnmarshalJSON(data, &assistantMessage, "", true, true); err != nil {
-			return fmt.Errorf("could not unmarshal expected type: %w", err)
+		if err := utils.UnmarshalJSON(data, &assistantMessage, "", true, false); err != nil {
+			return fmt.Errorf("could not unmarshal `%s` into expected (Role == assistant) type AssistantMessage within Message: %w", string(data), err)
 		}
 
 		u.AssistantMessage = assistantMessage
@@ -73,7 +73,7 @@ func (u *Message) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Message", string(data))
 }
 
 func (u Message) MarshalJSON() ([]byte, error) {
@@ -85,5 +85,5 @@ func (u Message) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.AssistantMessage, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type Message: all fields are null")
 }

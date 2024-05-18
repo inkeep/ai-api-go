@@ -4,6 +4,7 @@ package components
 
 import (
 	"errors"
+	"fmt"
 	"github.com/inkeep/ai-api-go/internal/utils"
 )
 
@@ -55,7 +56,7 @@ func (u *Loc) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return errors.New("could not unmarshal into supported union types")
+	return fmt.Errorf("could not unmarshal `%s` into any supported union types for Loc", string(data))
 }
 
 func (u Loc) MarshalJSON() ([]byte, error) {
@@ -67,7 +68,7 @@ func (u Loc) MarshalJSON() ([]byte, error) {
 		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
-	return nil, errors.New("could not marshal union type: all fields are null")
+	return nil, errors.New("could not marshal union type Loc: all fields are null")
 }
 
 type ValidationError struct {

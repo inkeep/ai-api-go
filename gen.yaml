@@ -23,8 +23,9 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 go:
-  version: 0.5.2
+  version: 0.5.3
   additionalDependencies: {}
+  allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
