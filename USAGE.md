@@ -13,7 +13,6 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
@@ -26,7 +25,6 @@ func main() {
 			},
 		},
 	}
-
 	ctx := context.Background()
 	res, err := s.ChatSession.Create(ctx, request)
 	if err != nil {

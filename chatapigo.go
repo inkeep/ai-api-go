@@ -109,17 +109,11 @@ func WithClient(client HTTPClient) SDKOption {
 	}
 }
 
-func withSecurity(security interface{}) func(context.Context) (interface{}, error) {
-	return func(context.Context) (interface{}, error) {
-		return security, nil
-	}
-}
-
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(apiKey string) SDKOption {
 	return func(sdk *ChatAPIGo) {
 		security := components.Security{APIKey: apiKey}
-		sdk.sdkConfiguration.Security = withSecurity(&security)
+		sdk.sdkConfiguration.Security = utils.AsSecuritySource(&security)
 	}
 }
 
@@ -144,9 +138,9 @@ func New(opts ...SDKOption) *ChatAPIGo {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "0.5.3",
-			GenVersion:        "2.333.3",
-			UserAgent:         "speakeasy-sdk/go 0.5.3 2.333.3 0.1.0 github.com/inkeep/ai-api-go",
+			SDKVersion:        "0.5.4",
+			GenVersion:        "2.335.5",
+			UserAgent:         "speakeasy-sdk/go 0.5.4 2.335.5 0.1.0 github.com/inkeep/ai-api-go",
 			Hooks:             hooks.New(),
 		},
 	}

@@ -172,6 +172,7 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 	}
 
 	return res, nil
+
 }
 
 // Continue Chat Session
@@ -323,4 +324,5 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 	}
 
 	return res, nil
+
 }
