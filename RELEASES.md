@@ -259,3 +259,13 @@ Based on:
 - [go v0.5.7] .
 ### Releases
 - [Go v0.5.7] https://github.com/inkeep/ai-api-go/releases/tag/v0.5.7 - .
+
+## 2024-06-22 00:03:15
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.314.2 (2.349.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v0.5.8] .
+### Releases
+- [Go v0.5.8] https://github.com/inkeep/ai-api-go/releases/tag/v0.5.8 - .
