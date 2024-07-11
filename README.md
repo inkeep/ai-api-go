@@ -395,6 +395,124 @@ func main() {
 
 <!-- End Special Types [types] -->
 
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a `retry.Config` object to the call by using the `WithRetries` option:
+```go
+package main
+
+import (
+	"context"
+	aiapigo "github.com/inkeep/ai-api-go"
+	"github.com/inkeep/ai-api-go/models/components"
+	"github.com/inkeep/ai-api-go/retry"
+	"log"
+	"models/operations"
+)
+
+func main() {
+	s := aiapigo.New(
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	)
+	request := components.CreateChatSessionWithChatResultInput{
+		IntegrationID: "<value>",
+		ChatSession: components.ChatSessionInput{
+			Messages: []components.Message{
+				components.CreateMessageUserMessage(
+					components.UserMessage{
+						Content: "<value>",
+					},
+				),
+			},
+		},
+	}
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, request, operations.WithRetries(
+		retry.Config{
+			Strategy: "backoff",
+			Backoff: &retry.BackoffStrategy{
+				InitialInterval: 1,
+				MaxInterval:     50,
+				Exponent:        1.1,
+				MaxElapsedTime:  100,
+			},
+			RetryConnectionErrors: false,
+		}))
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.ChatResult != nil {
+		defer res.ChatResultStream.Close()
+
+		for res.ChatResultStream.Next() {
+			event := res.ChatResultStream.Value()
+			// Handle the event
+		}
+	}
+}
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `WithRetryConfig` option at SDK initialization:
+```go
+package main
+
+import (
+	"context"
+	aiapigo "github.com/inkeep/ai-api-go"
+	"github.com/inkeep/ai-api-go/models/components"
+	"github.com/inkeep/ai-api-go/retry"
+	"log"
+)
+
+func main() {
+	s := aiapigo.New(
+		aiapigo.WithRetryConfig(
+			retry.Config{
+				Strategy: "backoff",
+				Backoff: &retry.BackoffStrategy{
+					InitialInterval: 1,
+					MaxInterval:     50,
+					Exponent:        1.1,
+					MaxElapsedTime:  100,
+				},
+				RetryConnectionErrors: false,
+			}),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+	)
+	request := components.CreateChatSessionWithChatResultInput{
+		IntegrationID: "<value>",
+		ChatSession: components.ChatSessionInput{
+			Messages: []components.Message{
+				components.CreateMessageUserMessage(
+					components.UserMessage{
+						Content: "<value>",
+					},
+				),
+			},
+		},
+	}
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, request)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.ChatResult != nil {
+		defer res.ChatResultStream.Close()
+
+		for res.ChatResultStream.Next() {
+			event := res.ChatResultStream.Value()
+			// Handle the event
+		}
+	}
+}
+
+```
+<!-- End Retries [retries] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

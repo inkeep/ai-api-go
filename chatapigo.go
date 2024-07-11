@@ -8,6 +8,7 @@ import (
 	"github.com/inkeep/ai-api-go/internal/hooks"
 	"github.com/inkeep/ai-api-go/internal/utils"
 	"github.com/inkeep/ai-api-go/models/components"
+	"github.com/inkeep/ai-api-go/retry"
 	"net/http"
 	"time"
 )
@@ -51,8 +52,9 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	UserAgent         string
-	RetryConfig       *utils.RetryConfig
+	RetryConfig       *retry.Config
 	Hooks             *hooks.Hooks
+	Timeout           *time.Duration
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -126,9 +128,16 @@ func WithSecuritySource(security func(context.Context) (components.Security, err
 	}
 }
 
-func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+func WithRetryConfig(retryConfig retry.Config) SDKOption {
 	return func(sdk *ChatAPIGo) {
 		sdk.sdkConfiguration.RetryConfig = &retryConfig
+	}
+}
+
+// WithTimeout Optional request timeout applied to each operation
+func WithTimeout(timeout time.Duration) SDKOption {
+	return func(sdk *ChatAPIGo) {
+		sdk.sdkConfiguration.Timeout = &timeout
 	}
 }
 
@@ -138,9 +147,9 @@ func New(opts ...SDKOption) *ChatAPIGo {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "0.5.8",
-			GenVersion:        "2.349.6",
-			UserAgent:         "speakeasy-sdk/go 0.5.8 2.349.6 0.1.0 github.com/inkeep/ai-api-go",
+			SDKVersion:        "0.6.0",
+			GenVersion:        "2.365.0",
+			UserAgent:         "speakeasy-sdk/go 0.6.0 2.365.0 0.1.0 github.com/inkeep/ai-api-go",
 			Hooks:             hooks.New(),
 		},
 	}
