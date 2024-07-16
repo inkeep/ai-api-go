@@ -7,11 +7,12 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
+	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
+		aiapigo.WithSecurity(os.Getenv("API_KEY")),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
