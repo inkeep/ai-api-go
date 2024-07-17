@@ -50,14 +50,17 @@ type EventStream[T any] struct {
 	r            io.ReadCloser
 	scanner      *bufio.Scanner
 	unmarshaller func(se []byte) (T, error)
+	sentinel     string
 
-	err error
-	val *T
+	finished bool
+	err      error
+	val      *T
 }
 
 func NewEventStream[T any](
 	source io.Reader,
 	unmarshaller func(se []byte) (T, error),
+	sentinel string,
 ) *EventStream[T] {
 	scanner := bufio.NewScanner(source)
 	scanner.Split(scanServerEvents)
@@ -73,6 +76,7 @@ func NewEventStream[T any](
 		r:            src,
 		scanner:      scanner,
 		unmarshaller: unmarshaller,
+		sentinel:     sentinel,
 	}
 }
 
@@ -81,7 +85,7 @@ func NewEventStream[T any](
 // an error occurred. After this method returns false, the Err method is used
 // to check for any errors that occurred while parsing the stream.
 func (es *EventStream[T]) Next() bool {
-	if es.err != nil {
+	if es.err != nil || es.finished {
 		return false
 	}
 
@@ -137,6 +141,11 @@ func (es *EventStream[T]) Next() bool {
 			publish = true
 			data += value + "\n"
 		}
+	}
+
+	if es.sentinel != "" && data == es.sentinel+"\n" {
+		es.finished = true
+		return false
 	}
 
 	if len(data) > 0 {

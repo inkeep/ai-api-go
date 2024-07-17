@@ -147,9 +147,9 @@ func New(opts ...SDKOption) *ChatAPIGo {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "0.7.0",
-			GenVersion:        "2.372.3",
-			UserAgent:         "speakeasy-sdk/go 0.7.0 2.372.3 0.1.0 github.com/inkeep/ai-api-go",
+			SDKVersion:        "0.7.1",
+			GenVersion:        "2.373.2",
+			UserAgent:         "speakeasy-sdk/go 0.7.1 2.373.2 0.1.0 github.com/inkeep/ai-api-go",
 			Hooks:             hooks.New(),
 		},
 	}

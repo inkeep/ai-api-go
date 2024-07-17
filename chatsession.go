@@ -197,7 +197,7 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 					return components.ChatResultStream{}, err
 				}
 				return e, nil
-			})
+			}, "")
 			res.ChatResultStream = out
 		default:
 			rawBody, err := io.ReadAll(httpRes.Body)
@@ -419,7 +419,7 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 					return components.ChatResultStream{}, err
 				}
 				return e, nil
-			})
+			}, "")
 			res.ChatResultStream = out
 		default:
 			rawBody, err := io.ReadAll(httpRes.Body)
