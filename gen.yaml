@@ -23,7 +23,7 @@ features:
     nameOverrides: 2.81.1
     retries: 2.82.0
 go:
-  version: 0.8.2
+  version: 0.8.3
   additionalDependencies: {}
   allowUnknownFieldsInWeakUnions: false
   clientServerStatusCodesAsErrors: true
