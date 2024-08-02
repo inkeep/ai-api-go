@@ -66,6 +66,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -129,6 +130,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -252,6 +254,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -301,6 +304,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -387,6 +391,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -456,6 +461,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
@@ -513,6 +519,7 @@ func main() {
 
 		for res.ChatResultStream.Next() {
 			event := res.ChatResultStream.Value()
+			log.Print(event)
 			// Handle the event
 		}
 	}
