@@ -37,12 +37,11 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -101,12 +100,11 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -163,12 +161,11 @@ import (
 	"github.com/inkeep/ai-api-go/models/components"
 	"github.com/inkeep/ai-api-go/models/sdkerrors"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -224,13 +221,12 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
 		aiapigo.WithServerIndex(0),
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -274,13 +270,12 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
 		aiapigo.WithServerURL("https://api.inkeep.com"),
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -362,12 +357,11 @@ import (
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"log"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -422,12 +416,11 @@ import (
 	"github.com/inkeep/ai-api-go/retry"
 	"log"
 	"models/operations"
-	"os"
 )
 
 func main() {
 	s := aiapigo.New(
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
@@ -479,7 +472,6 @@ import (
 	"github.com/inkeep/ai-api-go/models/components"
 	"github.com/inkeep/ai-api-go/retry"
 	"log"
-	"os"
 )
 
 func main() {
@@ -495,7 +487,7 @@ func main() {
 				},
 				RetryConnectionErrors: false,
 			}),
-		aiapigo.WithSecurity(os.Getenv("API_KEY")),
+		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
 	request := components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",

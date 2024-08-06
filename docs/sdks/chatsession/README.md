@@ -20,7 +20,6 @@ Create Chat Session
 package main
 
 import(
-	"os"
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"context"
@@ -29,7 +28,7 @@ import(
 
 func main() {
     s := aiapigo.New(
-        aiapigo.WithSecurity(os.Getenv("API_KEY")),
+        aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
     request := components.CreateChatSessionWithChatResultInput{
         IntegrationID: "<value>",
@@ -87,7 +86,6 @@ Continue Chat Session
 package main
 
 import(
-	"os"
 	aiapigo "github.com/inkeep/ai-api-go"
 	"github.com/inkeep/ai-api-go/models/components"
 	"context"
@@ -96,7 +94,7 @@ import(
 
 func main() {
     s := aiapigo.New(
-        aiapigo.WithSecurity(os.Getenv("API_KEY")),
+        aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
     var chatSessionID string = "<value>"
 
