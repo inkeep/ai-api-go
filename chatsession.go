@@ -34,6 +34,7 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "create",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
@@ -251,6 +252,7 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 	hookCtx := hooks.HookContext{
 		Context:        ctx,
 		OperationID:    "continue",
+		OAuth2Scopes:   []string{},
 		SecuritySource: s.sdkConfiguration.Security,
 	}
 
