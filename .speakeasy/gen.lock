@@ -3,10 +3,10 @@ id: 75084268-f421-4ea6-8995-12fee2bcfd75
 management:
   docChecksum: 3421b267db90c24a6b62d0b3559978bc
   docVersion: 0.1.0
-  speakeasyVersion: 1.361.1
-  generationVersion: 2.393.4
-  releaseVersion: 0.9.1
-  configChecksum: b049980cbfe9c0aa02f8bf471410ce03
+  speakeasyVersion: 1.368.0
+  generationVersion: 2.399.0
+  releaseVersion: 0.9.2
+  configChecksum: 78f4ffc37990db715bf510d31e03037f
   repoURL: https://github.com/inkeep/ai-api-go.git
   repoSubDirectory: .
   installationURL: https://github.com/inkeep/ai-api-go
@@ -16,7 +16,7 @@ features:
     acceptHeaders: 2.81.2
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.6
-    core: 3.5.3
+    core: 3.5.4
     defaultEnabledRetries: 0.2.0
     envVarSecurityUsage: 0.3.0
     flattening: 2.81.1
