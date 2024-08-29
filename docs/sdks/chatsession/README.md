@@ -59,8 +59,6 @@ func main() {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
@@ -69,14 +67,17 @@ func main() {
 | `request`                                                                                                          | [components.CreateChatSessionWithChatResultInput](../../models/components/createchatsessionwithchatresultinput.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 | `opts`                                                                                                             | [][operations.Option](../../models/operations/option.md)                                                           | :heavy_minus_sign:                                                                                                 | The options for this request.                                                                                      |
 
-
 ### Response
 
 **[*operations.CreateResponse](../../models/operations/createresponse.md), error**
+
+### Errors
+
 | Error Object                  | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
 | sdkerrors.SDKError            | 4xx-5xx                       | */*                           |
+
 
 ## Continue
 
@@ -125,8 +126,6 @@ func main() {
 }
 ```
 
-
-
 ### Parameters
 
 | Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
@@ -136,10 +135,12 @@ func main() {
 | `continueChatSessionWithChatResultInput`                                                                               | [components.ContinueChatSessionWithChatResultInput](../../models/components/continuechatsessionwithchatresultinput.md) | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `opts`                                                                                                                 | [][operations.Option](../../models/operations/option.md)                                                               | :heavy_minus_sign:                                                                                                     | The options for this request.                                                                                          |
 
-
 ### Response
 
 **[*operations.ContinueResponse](../../models/operations/continueresponse.md), error**
+
+### Errors
+
 | Error Object                  | Status Code                   | Content Type                  |
 | ----------------------------- | ----------------------------- | ----------------------------- |
 | sdkerrors.HTTPValidationError | 422                           | application/json              |
