@@ -205,7 +205,6 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 			if err != nil {
 				return nil, fmt.Errorf("error reading response body: %w", err)
 			}
-
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 422:
@@ -222,7 +221,6 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 			if err != nil {
 				return nil, fmt.Errorf("error reading response body: %w", err)
 			}
-
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
@@ -232,14 +230,12 @@ func (s *ChatSession) Create(ctx context.Context, request components.CreateChatS
 		if err != nil {
 			return nil, fmt.Errorf("error reading response body: %w", err)
 		}
-
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		rawBody, err := io.ReadAll(httpRes.Body)
 		if err != nil {
 			return nil, fmt.Errorf("error reading response body: %w", err)
 		}
-
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
@@ -428,7 +424,6 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 			if err != nil {
 				return nil, fmt.Errorf("error reading response body: %w", err)
 			}
-
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 422:
@@ -445,7 +440,6 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 			if err != nil {
 				return nil, fmt.Errorf("error reading response body: %w", err)
 			}
-
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", httpRes.Header.Get("Content-Type")), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
@@ -455,14 +449,12 @@ func (s *ChatSession) Continue(ctx context.Context, chatSessionID string, contin
 		if err != nil {
 			return nil, fmt.Errorf("error reading response body: %w", err)
 		}
-
 		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	default:
 		rawBody, err := io.ReadAll(httpRes.Body)
 		if err != nil {
 			return nil, fmt.Errorf("error reading response body: %w", err)
 		}
-
 		return nil, sdkerrors.NewSDKError("unknown status code returned", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 

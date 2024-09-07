@@ -21,8 +21,8 @@ package main
 
 import(
 	aiapigo "github.com/inkeep/ai-api-go"
-	"github.com/inkeep/ai-api-go/models/components"
 	"context"
+	"github.com/inkeep/ai-api-go/models/components"
 	"log"
 )
 
@@ -30,7 +30,9 @@ func main() {
     s := aiapigo.New(
         aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
-    request := components.CreateChatSessionWithChatResultInput{
+
+    ctx := context.Background()
+    res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
         IntegrationID: "<value>",
         ChatSession: components.ChatSessionInput{
             Messages: []components.Message{
@@ -41,9 +43,7 @@ func main() {
                 ),
             },
         },
-    }
-    ctx := context.Background()
-    res, err := s.ChatSession.Create(ctx, request)
+    })
     if err != nil {
         log.Fatal(err)
     }
@@ -90,8 +90,8 @@ package main
 
 import(
 	aiapigo "github.com/inkeep/ai-api-go"
-	"github.com/inkeep/ai-api-go/models/components"
 	"context"
+	"github.com/inkeep/ai-api-go/models/components"
 	"log"
 )
 
@@ -99,18 +99,16 @@ func main() {
     s := aiapigo.New(
         aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
     )
-    var chatSessionID string = "<value>"
 
-    continueChatSessionWithChatResultInput := components.ContinueChatSessionWithChatResultInput{
+    ctx := context.Background()
+    res, err := s.ChatSession.Continue(ctx, "<value>", components.ContinueChatSessionWithChatResultInput{
         IntegrationID: "<value>",
         Message: components.CreateMessageAssistantMessage(
                 components.AssistantMessage{
                     Content: "<value>",
                 },
         ),
-    }
-    ctx := context.Background()
-    res, err := s.ChatSession.Continue(ctx, chatSessionID, continueChatSessionWithChatResultInput)
+    })
     if err != nil {
         log.Fatal(err)
     }

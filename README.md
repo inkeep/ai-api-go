@@ -16,9 +16,31 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Inkeep Search and Chat API: Leverage the Inkeep APIs to create your own AI-powered search and chat experiences built on top of your own content.
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Server-sent event streaming](#server-sent-event-streaming)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Special Types](#special-types)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+To add the SDK as a dependency to your project:
 ```bash
 go get github.com/inkeep/ai-api-go
 ```
@@ -43,7 +65,9 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -54,9 +78,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -106,7 +128,9 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -117,9 +141,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -167,7 +189,9 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -178,9 +202,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 
 		var e *sdkerrors.HTTPValidationError
@@ -228,7 +250,9 @@ func main() {
 		aiapigo.WithServerIndex(0),
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -239,9 +263,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -277,7 +299,9 @@ func main() {
 		aiapigo.WithServerURL("https://api.inkeep.com"),
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -288,9 +312,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -363,7 +385,9 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -374,9 +398,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -422,7 +444,9 @@ func main() {
 	s := aiapigo.New(
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -433,9 +457,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request, operations.WithRetries(
+	}, operations.WithRetries(
 		retry.Config{
 			Strategy: "backoff",
 			Backoff: &retry.BackoffStrategy{
@@ -489,7 +511,9 @@ func main() {
 			}),
 		aiapigo.WithSecurity("<YOUR_BEARER_TOKEN_HERE>"),
 	)
-	request := components.CreateChatSessionWithChatResultInput{
+
+	ctx := context.Background()
+	res, err := s.ChatSession.Create(ctx, components.CreateChatSessionWithChatResultInput{
 		IntegrationID: "<value>",
 		ChatSession: components.ChatSessionInput{
 			Messages: []components.Message{
@@ -500,9 +524,7 @@ func main() {
 				),
 			},
 		},
-	}
-	ctx := context.Background()
-	res, err := s.ChatSession.Create(ctx, request)
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
