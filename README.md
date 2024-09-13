@@ -99,10 +99,16 @@ func main() {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
+
 ### [ChatSession](docs/sdks/chatsession/README.md)
 
 * [Create](docs/sdks/chatsession/README.md#create) - Create Chat Session
 * [Continue](docs/sdks/chatsession/README.md#continue) - Continue Chat Session
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Server-sent event streaming [eventstream] -->

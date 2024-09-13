@@ -104,9 +104,9 @@ func main() {
     res, err := s.ChatSession.Continue(ctx, "<value>", components.ContinueChatSessionWithChatResultInput{
         IntegrationID: "<value>",
         Message: components.CreateMessageAssistantMessage(
-                components.AssistantMessage{
-                    Content: "<value>",
-                },
+            components.AssistantMessage{
+                Content: "<value>",
+            },
         ),
     })
     if err != nil {
