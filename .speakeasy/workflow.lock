@@ -19,8 +19,6 @@ workflow:
         my-source:
             inputs:
                 - location: https://raw.githubusercontent.com/inkeep/chat-api-openapi-schema/main/openapi.yaml
-            registry:
-                location: registry.speakeasyapi.dev/ash-testing/ash-testing/my-source
     targets:
         ai-api:
             target: go
