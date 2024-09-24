@@ -1,0 +1,25 @@
+speakeasyVersion: 1.402.9
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:d68478337aae8e5f0ca3f56e5d67835b1a58070ede167034b505a5cbb39166d2
+        sourceBlobDigest: sha256:0f5e71cdc153e8ed713d4131a5f7c5bade1ce347403c6d519bafadc8253e6968
+        tags:
+            - latest
+targets:
+    ai-api:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:d68478337aae8e5f0ca3f56e5d67835b1a58070ede167034b505a5cbb39166d2
+        sourceBlobDigest: sha256:0f5e71cdc153e8ed713d4131a5f7c5bade1ce347403c6d519bafadc8253e6968
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://raw.githubusercontent.com/inkeep/chat-api-openapi-schema/main/openapi.yaml
+    targets:
+        ai-api:
+            target: go
+            source: my-source
