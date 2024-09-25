@@ -1,17 +1,18 @@
-speakeasyVersion: 1.402.9
+speakeasyVersion: 1.402.12
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:d68478337aae8e5f0ca3f56e5d67835b1a58070ede167034b505a5cbb39166d2
-        sourceBlobDigest: sha256:0f5e71cdc153e8ed713d4131a5f7c5bade1ce347403c6d519bafadc8253e6968
+        sourceRevisionDigest: sha256:4ac08282c8bea199e7c26b0c11cb249055bd482b5e9ac7009bfb43a633a8c561
+        sourceBlobDigest: sha256:3ef2e80cf1cc177b9842d6f65b87d8ee08a6219346d5c8d4a992c53129dfdafe
         tags:
             - latest
+            - main
 targets:
     ai-api:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:d68478337aae8e5f0ca3f56e5d67835b1a58070ede167034b505a5cbb39166d2
-        sourceBlobDigest: sha256:0f5e71cdc153e8ed713d4131a5f7c5bade1ce347403c6d519bafadc8253e6968
+        sourceRevisionDigest: sha256:4ac08282c8bea199e7c26b0c11cb249055bd482b5e9ac7009bfb43a633a8c561
+        sourceBlobDigest: sha256:3ef2e80cf1cc177b9842d6f65b87d8ee08a6219346d5c8d4a992c53129dfdafe
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -19,6 +20,8 @@ workflow:
         my-source:
             inputs:
                 - location: https://raw.githubusercontent.com/inkeep/chat-api-openapi-schema/main/openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/inkeep/inkeep/my-source
     targets:
         ai-api:
             target: go
